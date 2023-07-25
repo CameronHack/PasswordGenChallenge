@@ -6,9 +6,9 @@ var generateBtn = document.querySelector("#generate");
 let lowerCaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let upperCaseLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// let symbols = [];
+let symbols = ['!', '?', '@', '#', '$', '%', '^', '&', '*', '/', '-', '_', '=', '+'];
 let combinedPassword = [];
-let genCharacterIndex = Math.floor(Math.random()*combinedPassword.length);
+let finalPass = "";
 
 function generatePassword(){
   if (confirm('Do you want password to contain lowercase letters?')){
@@ -20,14 +20,26 @@ function generatePassword(){
   if (confirm('Do you want password to contain numbers?')){
     combinedPassword = [...combinedPassword, ...numbers]
   }
-
-  let passwordLength = prompt('How long is the password');
-  for (let i = 0; i < passwordLength; i++) {
-    const element = array[i]
-    
+  if (confirm('Do you want password to contain symbols?')){
+    combinedPassword = [...combinedPassword, ...symbols]
   }
 
-  return combinedPassword
+  console.log("combinedPassword array: " + combinedPassword)
+  console.log("combinedPassword length: " + combinedPassword.length)
+
+  let passwordLength = prompt('How long is the password');
+
+  for (let i = 0; i < passwordLength; i++) {
+    let genCharacterIndex = Math.floor(Math.random()*combinedPassword.length);
+    finalPass += combinedPassword[genCharacterIndex]
+    console.log("combinedPassword array: " + combinedPassword)
+    console.log("combinedPassword length: " + combinedPassword.length)
+    console.log(genCharacterIndex)
+  }
+
+  console.log(finalPass)
+
+  return finalPass
 }
 
 function writePassword() {
