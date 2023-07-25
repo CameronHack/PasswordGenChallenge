@@ -27,15 +27,26 @@ function generatePassword(){
   console.log("combinedPassword array: " + combinedPassword)
   console.log("combinedPassword length: " + combinedPassword.length)
 
-  let passwordLength = prompt('How long is the password');
+  let passwordLength = prompt('Enter a password length between 8 and 128 characters');
 
-  for (let i = 0; i < passwordLength; i++) {
-    let genCharacterIndex = Math.floor(Math.random()*combinedPassword.length);
-    finalPass += combinedPassword[genCharacterIndex]
-    console.log("combinedPassword array: " + combinedPassword)
-    console.log("combinedPassword length: " + combinedPassword.length)
-    console.log(genCharacterIndex)
+  // if (passwordLength < 8) {
+  //   passwordLength = prompt('Too short please enter a number greater then 8');
+  // } else if (passwordLength > 128){
+  //   passwordLength = prompt('Too long please enter a number less then 128');
+  // }
+
+  if (passwordLength > 8 && passwordLength < 128) {
+    for (let i = 0; i < passwordLength; i++) {
+      let genCharacterIndex = Math.floor(Math.random()*combinedPassword.length);
+      finalPass += combinedPassword[genCharacterIndex]
+      console.log("combinedPassword array: " + combinedPassword)
+      console.log("combinedPassword length: " + combinedPassword.length)
+      console.log(genCharacterIndex)
+    }
+  } else {
+    passwordLength = confirm('Invalid Password length please TRY AGAIN!')
   }
+
 
   console.log(finalPass)
 
