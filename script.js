@@ -10,7 +10,6 @@ let symbols = ['!', '?', '@', '#', '$', '%', '^', '&', '*', '/', '-', '_', '=', 
 
 // this block generates the password for you
 function generatePassword(){
-// resets password each time you hit Generate Password so you dont have to refresh :)
   let finalPass = "";
   let combinedPassword = [];
 
@@ -26,27 +25,28 @@ function generatePassword(){
   if (confirm('Do you want password to contain symbols?')){
     combinedPassword = [...combinedPassword, ...symbols]
   }
-
+  
   console.log("combinedPassword array: " + combinedPassword)
   console.log("combinedPassword length: " + combinedPassword.length)
-
   let passwordLength = prompt('Enter a password length between 8 and 128 characters');
-
-  if (passwordLength >= 8 && passwordLength <= 128) {
+  
+  if (passwordLength >= 8 && passwordLength <= 128 && combinedPassword.length > 0) {
     for (let i = 0; i < passwordLength; i++) {
       let genCharacterIndex = Math.floor(Math.random()*combinedPassword.length);
       finalPass += combinedPassword[genCharacterIndex]
       console.log("combinedPassword array: " + combinedPassword)
       console.log("combinedPassword length: " + combinedPassword.length)
+      console.log('Your final password: ' + finalPass)
       console.log(genCharacterIndex)
     }
   } else {
-    passwordLength = confirm('😡 Invalid password length please TRY AGAIN! 😡')
+    confirm('😡 Invalid password length and/or no characters selected please TRY AGAIN! 😡')
   }
 
-  combinedPassword = []
-
+  console.log('Your final password: ' + finalPass)
+  console.log('successful return')
   return finalPass
+
 }
 
 // Write password to the #password input
