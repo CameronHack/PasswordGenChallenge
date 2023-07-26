@@ -11,3 +11,6 @@ The purpose of this application is to randomly generate a password based on user
 - Random password generation
 - Choose what characters you want to be present in password
 - Choose password length
+
+
+![Password-gen-screenshot](https://github.com/CameronHack/PasswordGenChallenge/assets/139071966/2f519263-8973-49da-bb99-561917cb67bd)
